@@ -33,13 +33,17 @@ const nav_ul = document.getElementById("navbar__list");
  *
  */
 const makeActive = () => {
+  console.log("Hi");
+
   for (const section of sections) {
     const box = section.getBoundingClientRect();
     //Find a value that works best, but 150 seems to be a good start.
-    if (box.top <= VALUE && box.bottom >= VALUE) {
+    if (box.top <= 150 && box.bottom >= 150) {
       //apply active state on current section and corresponding Nav link
+      section.classList.add("active");
     } else {
       //Remove active state from other section and corresponding Nav link
+      section.classList.remove("active");
     }
   }
 };
@@ -69,6 +73,7 @@ for (const section of sections) {
  * Begin Events
  *
  */
+document.addEventListener("scroll", makeActive);
 
 // Build menu
 
