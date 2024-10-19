@@ -23,8 +23,6 @@
  *
  */
 const sections = document.querySelectorAll("section");
-console.log(sections);
-
 const nav_ul = document.getElementById("navbar__list");
 
 /**
@@ -33,20 +31,27 @@ const nav_ul = document.getElementById("navbar__list");
  *
  */
 const makeActive = () => {
-  console.log("Hi");
-
   for (const section of sections) {
     const box = section.getBoundingClientRect();
+    const active_li = document.getElementById(`${section.id}__nav`);
     //Find a value that works best, but 150 seems to be a good start.
     if (box.top <= 150 && box.bottom >= 150) {
       //apply active state on current section and corresponding Nav link
       section.classList.add("active");
+      active_li.classList.add("active");
     } else {
       //Remove active state from other section and corresponding Nav link
       section.classList.remove("active");
+      active_li.classList.remove("active");
     }
   }
 };
+// const handleSectionClick = (event) => {
+//   const section = event.target;
+//   section.className = "menu__link active";
+// }
+
+// ;
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -57,6 +62,7 @@ const makeActive = () => {
 for (const section of sections) {
   const li = document.createElement("li");
   const a = document.createElement("a");
+  a.id = `${section.id}__nav`;
   a.classList.add("menu__link");
   a.textContent = section.getAttribute("data-nav");
   a.href = `#${section.id}`;
@@ -65,15 +71,16 @@ for (const section of sections) {
 }
 
 // Add class 'active' to section when near top of viewport
+document.addEventListener("scroll", makeActive);
 
 // Scroll to anchor ID using scrollTO event
+// nav_ul.addEventListener("click", handleSectionClick);
 
 /**
  * End Main Functions
  * Begin Events
  *
  */
-document.addEventListener("scroll", makeActive);
 
 // Build menu
 

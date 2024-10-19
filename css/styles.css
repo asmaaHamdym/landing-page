@@ -82,10 +82,19 @@ section {
     color: #000;
 }
 
+.navbar__menu .active {
+    background-color: #4E6979;
+}
+
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+navbar__list li.active {
+    color: white;
+    background: #000;
 }
 
 /* Header Styles */
@@ -194,6 +203,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* Section Active Styles */
 /* Note: active class is applied through javascript. You should update the class here and in the index.html to what you set in javascript file.  */
 section.active {
+
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
