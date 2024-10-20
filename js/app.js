@@ -59,11 +59,7 @@ const handleSectionClick = (event) => {
 };
 
 // ;
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
+// End Helper Functions
 
 // build the nav
 for (const section of sections) {
