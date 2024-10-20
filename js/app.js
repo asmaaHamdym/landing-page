@@ -22,6 +22,7 @@
  * Define Global Variables
  *
  */
+let isScrolling;
 const sections = document.querySelectorAll("section");
 const nav_ul = document.getElementById("navbar__list");
 
@@ -33,7 +34,9 @@ const nav_ul = document.getElementById("navbar__list");
 const makeActive = () => {
   for (const section of sections) {
     const box = section.getBoundingClientRect();
-    const active_li = document.getElementById(`${section.id}__nav`);
+    const active_li = document.querySelector(`.${section.id}`);
+    // console.log(active_li);
+
     //Find a value that works best, but 150 seems to be a good start.
     if (box.top <= 150 && box.bottom >= 150) {
       //apply active state on current section and corresponding Nav link
@@ -46,10 +49,14 @@ const makeActive = () => {
     }
   }
 };
-// const handleSectionClick = (event) => {
-//   const section = event.target;
-//   section.className = "menu__link active";
-// }
+const handleSectionClick = (event) => {
+  event.preventDefault();
+  const section_id = event.target.getAttribute("data-nav");
+  const section = document.getElementById(section_id);
+  console.log(section);
+
+  section.scrollIntoView({ behavior: "smooth" });
+};
 
 // ;
 /**
@@ -62,28 +69,30 @@ const makeActive = () => {
 for (const section of sections) {
   const li = document.createElement("li");
   const a = document.createElement("a");
-  a.id = `${section.id}__nav`;
-  a.classList.add("menu__link");
-  a.textContent = section.getAttribute("data-nav");
-  a.href = `#${section.id}`;
+  a.setAttribute("data-nav", section.id);
+  a.classList.add("menu__link", section.id);
+  a.innerHTML = section.getAttribute("data-nav");
+  // a.href = `#${section.id}`;
   li.appendChild(a);
   nav_ul.appendChild(li);
 }
 
-// Add class 'active' to section when near top of viewport
+// Add class 'active' to section when near top of viewport and highlight viewes section in the navbar
 document.addEventListener("scroll", makeActive);
 
-// Scroll to anchor ID using scrollTO event
-// nav_ul.addEventListener("click", handleSectionClick);
+// Scroll to anchor ID using scrollIntoview function
+nav_ul.addEventListener("click", handleSectionClick);
 
-/**
- * End Main Functions
- * Begin Events
- *
- */
+// Hide fixed navigation bar while not scrolling
 
-// Build menu
+window.addEventListener("scroll", function () {
+  // Clear the timeout if user is scrolling
+  window.clearTimeout(isScrolling);
 
-// Scroll to section on link click
-
-// Set sections as active
+  // Set a timeout to run after scrolling ends
+  isScrolling = setTimeout(function () {
+    console.log("User has stopped scrolling.");
+    // Hide navigation
+    nav.classList.remove("show");
+  }, 200); // Adjust the timeout duration as needed
+});
