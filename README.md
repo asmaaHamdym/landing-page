@@ -1,9 +1,21 @@
 # Landing Page Project
 
-## Instructions
+## This code is my contribution to the second required project in Udacity's Front End Web Developer & Digital Freelancing Nanodegree Program
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+### Features
 
-To get started, open `js/app.js` and start building out the app's functionality
+This project creates a smooth scrolling navigation system with the following features:
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+- Active Sections: Based on the user's scroll position, highlights the currently visible section and its corresponding navigation link.
+- Smooth Scrolling: Clicking on a navigation link smoothly scrolls the user to the corresponding section.
+- Scroll-to-Top Button: A button appears when the user scrolls past a certain point, allowing them to easily return to the top.
+- Expandable Sections: Clicking on a section header toggles the visibility of its content.
+- Responsive Design: The layout adapts to different screen sizes and devices.
+
+### Installation
+
+This script is directly included in the HTML file and CSS is loaded. No additional setup is required.
+
+### Additonal Notes
+
+This project uses Font Awesome icon library for the caret icon.
