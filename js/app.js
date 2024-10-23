@@ -42,21 +42,23 @@ const handleSectionClick = (event) => {
 };
 // Function to check if the user scrolled to bottom
 
-// const
+// const addCaretIcon = (section) => {
+
+// };
 
 // Dynamically generate navigation links for each section
 for (const section of sections) {
-  // span tp ho;d the collapse icom
-  const icon_span = document.createElement("span");
-  icon_span.classList.add("collapse-icon");
-  icon_span.innerHTML = `<i class="fa-solid fa-caret-down"></i>`;
-  // icon_span.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+  const paragraph = section.querySelector("p");
   const heading = section.querySelector("h2");
-  console.log(heading);
 
+  const icon_span = document.createElement("span");
+  icon_span.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+  icon_span.classList.add("caret-icon");
   heading.append(icon_span);
-
-  // console.log(section);
+  heading.addEventListener("click", () => {
+    paragraph.classList.toggle("hide");
+    icon_span.classList.toggle("caret-up");
+  });
 
   const li = document.createElement("li");
   const a = document.createElement("a");
@@ -91,7 +93,6 @@ window.addEventListener("scroll", function () {
   nav_ul.style.display = "block";
 
   isScrolling = setTimeout(function () {
-    console.log("User has stopped scrolling.");
     nav_ul.style.display = "none";
   }, 2000);
 });

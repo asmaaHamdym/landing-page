@@ -34,6 +34,7 @@ h1 {
 }
 
 h2 {
+
     border-bottom: 1px solid #cc1;
     font-family: 'Oxygen', Sans-Serif;
     font-size: 3em;
@@ -43,6 +44,11 @@ h2 {
 p {
     line-height: 1.6em;
     color: #eee;
+}
+
+span {
+    margin: 0 0.2em;
+    ;
 }
 
 /* ---- Layout Rules ---- */
@@ -57,9 +63,21 @@ main {
 
 section {
     position: relative;
-    min-height: 80vh;
+    /* min-height: 80vh; */
 }
 
+section .hide {
+    display: none;
+}
+
+.caret-icon {
+    position: absolute;
+}
+
+.caret-up {
+    transform: rotate(180deg);
+
+}
 
 /* ---- Module Rules ---- */
 
@@ -212,11 +230,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
     font-size: large;
 }
 
-/* .header-container {
-    display: flex;
-    justify-content: space-between;
-    ;
-} */
+
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
