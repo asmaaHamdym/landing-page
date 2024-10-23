@@ -9,7 +9,8 @@ This project creates a smooth scrolling navigation system with the following fea
 - Active Sections: Based on the user's scroll position, highlights the currently visible section and its corresponding navigation link.
 - Smooth Scrolling: Clicking on a navigation link smoothly scrolls the user to the corresponding section.
 - Scroll-to-Top Button: A button appears when the user scrolls past a certain point, allowing them to easily return to the top.
-- Expandable Sections: Clicking on a section header toggles the visibility of its content.
+- Hidden fixed navigation bar while not scrolling.
+- Collapsible Sections: Clicking on a section header toggles the visibility of its content.
 - Responsive Design: The layout adapts to different screen sizes and devices.
 
 ### Installation
