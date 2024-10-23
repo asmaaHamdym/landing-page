@@ -1,6 +1,6 @@
 # Landing Page Project
 
-## This code is my contribution to the second required project in Udacity's Front End Web Developer & Digital Freelancing Nanodegree Program
+**This code is my contribution to the second required project in Udacity's Front End Web Developer & Digital Freelancing Nanodegree Program**
 
 ### Features
 
