@@ -198,6 +198,25 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
+/* Scroll to top button styling */
+.btn-container {
+    display: none;
+    justify-content: center;
+}
+
+.scroll-to-top {
+    margin: 1em;
+    padding: 0.8em 1em;
+    border: 1px solid #cc1;
+    border-radius: 0.6em;
+    font-size: large;
+}
+
+/* .header-container {
+    display: flex;
+    justify-content: space-between;
+    ;
+} */
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
