@@ -31,20 +31,35 @@ const makeActive = () => {
 const handleSectionClick = (event) => {
   event.preventDefault();
 
-  // Get the ID of the section to scroll to
   const section_id = event.target.getAttribute("data-nav");
-
-  // Get a reference to the section element
   const section = document.getElementById(section_id);
 
-  // Scroll to the section smoothly
   section.scrollIntoView({ behavior: "smooth" });
 };
+
 // Function to check if the user scrolled to bottom
+const isBottom = () => {
+  const viewportHeight = window.innerHeight;
+  const scrollPosition = window.scrollY;
 
-// const addCaretIcon = (section) => {
+  // Check if user has scrolled past the fold
+  if (scrollPosition > viewportHeight) {
+    btn_container.style.display = "flex";
+  }
+};
+const checkScrolling = () => {
+  // Clear any existing timeout if user is still scrolling
 
-// };
+  window.clearTimeout(isScrolling);
+  nav_ul.style.display = "block";
+
+  isScrolling = setTimeout(function () {
+    nav_ul.style.display = "none";
+  }, 2000);
+};
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 // Dynamically generate navigation links for each section
 for (const section of sections) {
@@ -63,36 +78,19 @@ for (const section of sections) {
   const li = document.createElement("li");
   const a = document.createElement("a");
 
-  // Set the data-nav attribute to the section's ID for easy reference
   a.setAttribute("data-nav", section.id);
-
   a.classList.add("menu__link", section.id);
-
   a.innerHTML = section.getAttribute("data-nav");
-
   a.href = `#${section.id}`;
 
-  // Append the anchor element to the list item
   li.appendChild(a);
-
-  // Append the list item to the navigation list
   nav_ul.appendChild(li);
 }
 
-// Add an event listener for scroll events
-document.addEventListener("scroll", makeActive);
-
-// Add an event listener for clicks on the navigation list
 nav_ul.addEventListener("click", handleSectionClick);
+scroll_to_top_btn.addEventListener("click", scrollToTop);
 
-// Function to detect end of scrolling and hide navigation
-window.addEventListener("scroll", function () {
-  // Clear any existing timeout if user is still scrolling
-
-  window.clearTimeout(isScrolling);
-  nav_ul.style.display = "block";
-
-  isScrolling = setTimeout(function () {
-    nav_ul.style.display = "none";
-  }, 2000);
-});
+// Add event listeners for scroll events
+document.addEventListener("scroll", makeActive);
+window.addEventListener("scroll", isBottom);
+window.addEventListener("scroll", checkScrolling);
